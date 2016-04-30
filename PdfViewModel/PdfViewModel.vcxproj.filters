@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>556f1add-7d0a-4a49-bcd6-bc06151731ee</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Class1.cpp" />
+    <ClCompile Include="ImageSourceBase.cpp" />
+    <ClCompile Include="ImageSourceSIS.cpp" />
+    <ClCompile Include="ImageSourceVSIS.cpp" />
+    <ClCompile Include="PdfDocViewModel.cpp" />
+    <ClCompile Include="PdfPageViewModel.cpp" />
+    <ClCompile Include="PdfViewContext.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Class1.h" />
+    <ClInclude Include="ImageSourceBase.h" />
+    <ClInclude Include="ImageSourceSIS.h" />
+    <ClInclude Include="ImageSourceVSIS.h" />
+    <ClInclude Include="PdfDocViewModel.h" />
+    <ClInclude Include="PdfPageViewModel.h" />
+    <ClInclude Include="PdfViewContext.h" />
+    <ClInclude Include="Renderer.h" />
+  </ItemGroup>
+</Project>
