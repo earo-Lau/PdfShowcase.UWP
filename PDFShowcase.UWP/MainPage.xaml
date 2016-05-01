@@ -81,17 +81,17 @@
                 </Grid>
             </DataTemplate>
             <ItemsPanelTemplate x:Name="zoomedInViewItemsPanelTemplate">
-                <VirtualizingStackPanel Orientation="Horizontal"/>
+                <VirtualizingStackPanel Orientation="Vertical"/>
             </ItemsPanelTemplate>
         </ResourceDictionary>
     </Page.Resources>
     <SemanticZoom x:Name="semanticZoom" 
                 VerticalAlignment="Bottom" 
-                Height="Auto" 
-                Width="Auto" 
-                ViewChangeStarted="EventHandlerViewChangeStarted">
-    </SemanticZoom>
+                Height="auto" 
+                Width="auto" 
+                ViewChangeStarted="EventHandlerViewChangeStarted" >
 
+    </SemanticZoom>
     <Page.BottomAppBar>
         <AppBar x:Name="bottomAppBar" Padding="0,0,0,0">
             <Grid>
