@@ -63,7 +63,7 @@
                         ZoomMode='Enabled' 
                         MinZoomFactor="1.0" 
                         MaxZoomFactor="2.5" 
-                        ViewChanged="EventHandlerViewChanged"  
+                        ViewChanged="EventHandlerViewChanged"
                       >
                     <ItemsPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
                         <ItemsPresenter.Transitions>
@@ -85,13 +85,24 @@
             </ItemsPanelTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <SemanticZoom x:Name="semanticZoom" 
+    <Page.Content>
+        <Canvas>
+            
+        <SemanticZoom x:Name="semanticZoom" 
                 VerticalAlignment="Bottom" 
                 Height="auto" 
                 Width="auto" 
                 ViewChangeStarted="EventHandlerViewChangeStarted" >
 
-    </SemanticZoom>
+        </SemanticZoom>
+            <StackPanel Canvas.Top="10" Canvas.Left="10" Orientation="Horizontal">
+
+                <TextBox x:Name="currentPage" Foreground="Red" Text="{x:Bind Path=pageModel.CurrentPage, Mode=TwoWay}"></TextBox>
+                <TextBlock Foreground="Red" Text="{x:Bind pageModel.PageSize, Mode=TwoWay}">
+                </TextBlock>
+            </StackPanel>
+        </Canvas>
+    </Page.Content>
     <Page.BottomAppBar>
         <AppBar x:Name="bottomAppBar" Padding="0,0,0,0">
             <Grid>

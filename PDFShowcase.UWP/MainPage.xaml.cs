@@ -17,6 +17,7 @@ using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.Data.Pdf;
 using Windows.Storage.Pickers;
+using PDFShowcase.UWP.Model;
 
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
@@ -29,16 +30,30 @@ namespace PDFShowcase.UWP
     {
         private PdfDocViewModel pdfDataSourceZoomedInView;
         private PdfDocViewModel pdfDataSourceZoomedOutView;
+        private PdfPageViewModel pdfPageViewModel;
         private PdfDocument pdfDocument;
         private StorageFile loadedFile;
         private GridView zoomedOutView;
         private ListView zoomedInView;
+        private PageModel pageModel;
 
         public MainPage()
         {
             this.InitializeComponent();
+            this.pageModel = new PageModel();
         }
 
+        private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Size pageSize;
+
+            pageSize.Width = Window.Current.Bounds.Width;
+            pageSize.Height = Window.Current.Bounds.Height;
+
+            this.semanticZoom.Width = this.zoomedInView.Width = pageSize.Width;
+            this.semanticZoom.Height = this.zoomedInView.Height = pageSize.Height;
+            
+        }
 
         /// <summary> 
         /// This overridden function is called whenever this page is navigated to 
@@ -77,6 +92,9 @@ namespace PDFShowcase.UWP
             {
                 InitializeZoomedInView();
                 InitializeZoomedOutView();
+
+                this.SizeChanged += MainPage_SizeChanged;
+                
             }
         }
 
@@ -99,6 +117,10 @@ namespace PDFShowcase.UWP
             this.zoomedInView.Template = this.zoomedInViewControlTemplate;
             this.pdfDataSourceZoomedInView = new PdfDocViewModel(pdfDocument, pageSize, SurfaceType.VirtualSurfaceImageSource);
             this.zoomedInView.ItemsSource = this.pdfDataSourceZoomedInView;
+
+            this.pageModel.PageSize = this.pdfDataSourceZoomedInView.Count;
+            this.zoomedInView.Width = pageSize.Width;
+            this.zoomedInView.Height = pageSize.Height;
 
             this.semanticZoom.ZoomedInView = zoomedInView;
         }
@@ -210,7 +232,7 @@ namespace PDFShowcase.UWP
                     {
                         // Getting destination item from Zoomed-In-View 
                         PdfPageViewModel destinationItem = (PdfPageViewModel)this.pdfDataSourceZoomedOutView[pageIndex];
-
+                        
                         if (destinationItem != null)
                         {
                             e.DestinationItem.Item = destinationItem;
@@ -219,5 +241,6 @@ namespace PDFShowcase.UWP
                 }
             }
         }
+        
     }
 }
