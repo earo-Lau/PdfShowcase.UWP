@@ -18,6 +18,7 @@ using Windows.Storage;
 using Windows.Data.Pdf;
 using Windows.Storage.Pickers;
 using PDFShowcase.UWP.Model;
+using PDFShowcase.UWP.Converter;
 
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
@@ -242,5 +243,13 @@ namespace PDFShowcase.UWP
             }
         }
         
+        private void TextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            //var pageIndex = Int32.Parse(textBox.Text);
+            var pdfPageViewModel = (PdfPageViewModel)textBox.DataContext;
+            textBox.Text = (pdfPageViewModel.PageIndex + 1).ToString();
+        }
     }
+    
 }
