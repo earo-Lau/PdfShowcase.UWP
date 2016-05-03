@@ -26,15 +26,8 @@
                 <Setter Property="IsSynchronizedWithCurrentItem" Value="True"/>
             </Style>
             <DataTemplate x:Name="zoomedOutViewItemTemplate">
-                <Viewbox>
-                    <Grid>
-                        <Image Source="{Binding ImageSourceSis}" Height="{Binding Height}" Width="{Binding Width}"/>
-                        <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <TextBox Text="{Binding PageIndex}" ></TextBox>
-                        </Canvas>
-                    </Grid>
-                </Viewbox>
-                
+
+                <Image Source="{Binding ImageSourceSis}" Height="{Binding Height}" Width="{Binding Width}"/>
             </DataTemplate>
             <ItemsPanelTemplate x:Name="zoomedOutViewItemsPanelTemplate">
                 <WrapGrid ItemHeight="300" 
@@ -102,15 +95,15 @@
     </Page.Resources>
     <Page.Content>
         <Canvas>
-            
-        <SemanticZoom x:Name="semanticZoom" 
+
+            <SemanticZoom x:Name="semanticZoom" 
                 VerticalAlignment="Bottom" 
                 Height="auto" 
                 Width="auto" 
                 ViewChangeStarted="EventHandlerViewChangeStarted" >
 
-        </SemanticZoom>
-            
+            </SemanticZoom>
+
         </Canvas>
     </Page.Content>
     <Page.BottomAppBar>
